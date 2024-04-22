@@ -13,16 +13,13 @@ class CostumerSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = User::factory(20)->create();
-        $users->each(function(User $user){
-            Customer::factory()->create([
-                'user_id' => $user->id,
-                'name' => fake()->name,
-                'document' => fake()->cpf,
-                'birthdate' =>now()->subYears(25)->format('Y-m-d'),
-                'email'=>fake()->safeEmail(),
-                'mobile'=>fake()->phoneNumber()
-            ]);
-        });
+
+        Customer::factory(20)->create([
+            'name' => fake()->name,
+            'document' => fake()->cpf,
+            'birthdate' =>now()->subYears(25)->format('Y-m-d'),
+            'mobile'=>fake()->phoneNumber()
+        ]);
+        
     }
 }
